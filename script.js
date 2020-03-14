@@ -1,11 +1,12 @@
-let todaysDay = moment().format('dddd MMM Do');
 
+/* Populate current date  */
+let todaysDay = moment().format('dddd MMM Do');
 $('#currentDay').text(todaysDay)
 
+/* get the current time to create the event slots */
 let currentTime = moment().format('HH');
 
-
-
+/* variable initialization for event manipulation */
 let eventText0 = " ";
 let eventText1 = " ";
 let eventText2 = " ";
@@ -17,10 +18,12 @@ let eventText7 = " ";
 let eventText8 = " ";
 let eventText9 = " ";
 
+/* time slots elements identifier in a array for manipulation */
 let timeList = ["#time8", "#time9", "#time10", "#time11", "#time12", "#time13", "#time14", "#time15", "#time16", "#time17"];
 
 let i = 8;
 
+/* object for the local storage the even slots */
 let textBlock = {
   text8: eventText0,
   text9: eventText1,
@@ -34,7 +37,8 @@ let textBlock = {
   text117: eventText9
 }
 $(document).ready(function () {
-
+  
+  /* forming the timeslots between 8am to 5pm based on the current time */
   for (let i = 8; i < 24; i++) {
     if (currentTime < 8) {
       $(timeList[i - 8]).addClass('past');
@@ -51,28 +55,23 @@ $(document).ready(function () {
     }
   }
 
-
+  /* check and get the local storage for the event information */
   let returnText = JSON.parse(localStorage.getItem("textBlock"));
-   if(returnText!==null){
+  if(returnText!==null){
 
-
-  document.getElementById("time8").value = returnText.text8;
-
-  document.getElementById("time9").value = returnText.text9;
-
-  document.getElementById("time10").value = returnText.text10;
-   
-
-  document.getElementById("time11").value = returnText.text11;
-  document.getElementById("time12").value = returnText.text12;
-  document.getElementById("time13").value = returnText.text13;
-  document.getElementById("time14").value = returnText.text14;
-  document.getElementById("time15").value = returnText.text15;
-  document.getElementById("time16").value = returnText.text16;
-  document.getElementById("time17").value = returnText.text17;
+     document.getElementById("time8").value = returnText.text8;
+     document.getElementById("time9").value = returnText.text9;
+     document.getElementById("time10").value = returnText.text10;
+     document.getElementById("time11").value = returnText.text11;
+     document.getElementById("time12").value = returnText.text12;
+     document.getElementById("time13").value = returnText.text13;
+     document.getElementById("time14").value = returnText.text14;
+     document.getElementById("time15").value = returnText.text15;
+     document.getElementById("time16").value = returnText.text16;
+     document.getElementById("time17").value = returnText.text17;
    }
 
-
+   /* save the event information in the local storage */
   $('.saveBtn').on('click', function () {
     event.preventDefault();
     eventText0 = document.querySelector("#time8").value;
@@ -85,7 +84,6 @@ $(document).ready(function () {
     eventText7 = document.querySelector("#time15").value;
     eventText8 = document.querySelector("#time16").value;
     eventText9 = document.querySelector("#time17").value;
-
     
     textBlock = {
       text8: eventText0,
