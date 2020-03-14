@@ -5,3 +5,7 @@
 # Entered event information will be stored in the local storage
 
 # When the page reloaded, previous stored local storage information will be get and stored in the event slots.
+
+# link to url = https://mathigayathri2001.github.io/scheduler-event/
+
+# ![currenttime](images/img1.jpg)
